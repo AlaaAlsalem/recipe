@@ -10,9 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 20_240_220_210_419) do
+ActiveRecord::Schema[7.1].define(version: 20_240_221_135_924) do
   # These are extensions that must be enabled in order to support this database
   enable_extension 'plpgsql'
+
+  create_table 'foods', force: :cascade do |t|
+    t.string 'name'
+    t.string 'measurement'
+    t.decimal 'price'
+    t.integer 'quantity'
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
+    t.bigint 'user_id', null: false
+    t.index ['user_id'], name: 'index_foods_on_user_id'
+  end
 
   create_table 'users', force: :cascade do |t|
     t.string 'email', default: '', null: false
@@ -22,7 +33,10 @@ ActiveRecord::Schema[7.1].define(version: 20_240_220_210_419) do
     t.datetime 'remember_created_at'
     t.datetime 'created_at', null: false
     t.datetime 'updated_at', null: false
+    t.string 'name'
     t.index ['email'], name: 'index_users_on_email', unique: true
     t.index ['reset_password_token'], name: 'index_users_on_reset_password_token', unique: true
   end
+
+  add_foreign_key 'foods', 'users'
 end
