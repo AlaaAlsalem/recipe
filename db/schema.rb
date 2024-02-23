@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -10,9 +12,29 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 20_240_221_135_924) do
+ActiveRecord::Schema[7.1].define(version: 20_240_223_172_458) do
   # These are extensions that must be enabled in order to support this database
   enable_extension 'plpgsql'
+
+  create_table 'culinary_recipe_foods', force: :cascade do |t|
+    t.bigint 'culinary_recipe_id', null: false
+    t.bigint 'food_id', null: false
+    t.integer 'quantity'
+    t.index ['culinary_recipe_id'], name: 'index_culinary_recipe_foods_on_culinary_recipe_id'
+    t.index ['food_id'], name: 'index_culinary_recipe_foods_on_food_id'
+  end
+
+  create_table 'culinary_recipes', force: :cascade do |t|
+    t.string 'name'
+    t.integer 'preparation_time'
+    t.integer 'cooking_time'
+    t.text 'description'
+    t.boolean 'public'
+    t.bigint 'user_id', null: false
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
+    t.index ['user_id'], name: 'index_culinary_recipes_on_user_id'
+  end
 
   create_table 'foods', force: :cascade do |t|
     t.string 'name'
@@ -38,5 +60,6 @@ ActiveRecord::Schema[7.1].define(version: 20_240_221_135_924) do
     t.index ['reset_password_token'], name: 'index_users_on_reset_password_token', unique: true
   end
 
+  add_foreign_key 'culinary_recipes', 'users'
   add_foreign_key 'foods', 'users'
 end
