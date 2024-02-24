@@ -44,6 +44,12 @@
 
 ### Key Features <a name="key-features"></a>
 
+- **View recipe list**
+- **View food list**
+- **Generate shopping list**
+
+
+
 .....
 
 <!-- GETTING STARTED -->
@@ -73,11 +79,14 @@ Clone this repository to your desired folder:
 
 - bin/rails server (to run web application)
 
-### Run tests
+### Run tests##
 
 <!-- - Run the following script and style test:
 
       - rspec spec ./name_of_file_spec.rb -->
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -87,6 +96,14 @@ Clone this repository to your desired folder:
 
 - GitHub: [AlaaAlsalem](https://github.com/AlaaAlsalem)
 - LinkedIn: [Aladdin Alsalem](https://www.linkedin.com/in/aladdin-alsalem/)
+
+
+👤 **Anand Mohan Pathak**
+
+- GitHub: [Anand8317](https://github.com/Anand8317)
+- Twitter: [AnandPathak](https://twitter.com/anand029)
+- LinkedIn: [AnandPathak](https://www.linkedin.com/in/anand-pathak-473611171/)
+
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
