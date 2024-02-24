@@ -1,10 +1,11 @@
 <div class="mx-auto md:w-2/3 w-full flex">
-  <%= form_with(model: @culinary_recipe, local: true) do |form| %>
-  <div class="flex items-center justify-center">
-    <%= form.check_box :public, class: "toggle-checkbox", id: "public-toggle" %>
-    <%= form.label :public, "Public", class: "toggle-label" %>
-  </div>
+
+<%= form_with model: @culinary_recipe, url: toggle_public_status_culinary_recipe_path(@culinary_recipe), method: :patch, local: false do |f| %>
+  <%= f.check_box :public, { onchange: "this.form.submit();" } %>
+  <%= f.label :public, 'Public' %>
+  <%= f.submit "Submit", class: "hide-submit-button"%>
 <% end %>
+
   <div class="mx-auto w-full">
 
     <%= render @culinary_recipe %>
