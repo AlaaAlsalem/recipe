@@ -1,5 +1,5 @@
 class CulinaryRecipesController < ApplicationController
-  before_action :set_culinary_recipe, only: %i[show edit update destroy destroy_ingredient]
+  before_action :set_culinary_recipe, only: %i[show edit update destroy destroy_ingredient toggle_public_status]
   before_action :authenticate_user!
 
   # GET /culinary_recipes or /culinary_recipes.json
@@ -90,6 +90,16 @@ class CulinaryRecipesController < ApplicationController
 
   def new_ingredient_form
     @culinary_recipe = CulinaryRecipe.find(params[:id])
+  end
+
+  def toggle_public_status
+    @culinary_recipe.update(public: !@culinary_recipe.public)
+    respond_to do |format|
+      format.html do
+        redirect_to culinary_recipe_path(@culinary_recipe), notice: 'Private/Public status has been updated.'
+      end
+      format.js # Add this line if you want to handle this action with AJAX
+    end
   end
 
   private
