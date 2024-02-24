@@ -1,7 +1,9 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+
   resources :foods
+  get 'public_recipes/index'
   devise_for :users
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
@@ -17,7 +19,14 @@ Rails.application.routes.draw do
       post :add_ingredient
       get :new_ingredient_form
       delete :destroy_ingredient
+      patch :toggle_public_status
     end
   end
+
   root 'culinary_recipes#index'
+
+  get 'public_recipes', to: 'public_recipes#index'
+
+
+
 end
