@@ -1,19 +1,15 @@
-<p style="color: green"><%= notice %></p>
+<div class="bg-white p-6 rounded-lg shadow-md mt-4">
+  <h1 class="text-3xl font-semibold mb-5">Foods</h1>
 
-<h1>Foods</h1>
+  <ul class="space-y-2">
+    <% @foods.each do |food| %>
+      <li>
+        <%= link_to food.name, food, class: "text-blue-500 hover:text-blue-700" %>
+        <%= link_to "Show", food, class: "ml-2 text-gray-500 hover:text-gray-700" %>
+        <%= button_to "Destroy", food, method: :delete, data: { confirm: "Are you sure you want to delete #{food.name}?" }, class: "ml-2 bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600" %>
+      </li>
+    <% end %>
+  </ul>
 
-<div id="foods">
-  <% @foods.each do |food| %>
-    <div id="<%= dom_id(food) %>">
-      <p>Name: <%= food.name %></p>
-      <p>Measurement: <%= food.measurement %></p>
-      <p>Price: <%= food.price %></p>
-      <p>Quantity: <%= food.quantity %></p>
-      <p>
-        <%= link_to "Show this food", food %>
-      </p>
-    </div>
-  <% end %>
-</div>
-
-<%= link_to "New food", new_food_path %>
+  <%= link_to "New Food", new_food_path, class: "mt-4 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-800" %>
+  </div>

@@ -1,10 +1,13 @@
-<% if @food %>
-  <%= render @food %>
-  <div>
-    <%= link_to "Edit this food", edit_food_path(@food) %> |
-    <%= link_to "Back to foods", foods_path %>
-    <%= button_to "Destroy this food", @food, method: :delete %>
+<div class="bg-white p-6 rounded-lg shadow-md mt-4">
+  <h1 class="text-3xl font-semibold mb-5"><%= @food.name %></h1>
+
+  <p class="text-lg">
+    Measurement: <%= @food.measurement %><br>
+    Price: <%= @food.price %><br>
+    Quantity: <%= @food.quantity %><br>
+  </p>
+
+  <div class="mt-4">
+    <%= link_to "Back", foods_path, class: "px-4 py-2 bg-blue-500 text-gray-700 rounded-lg hover:bg-gray-400" %>
   </div>
-<% else %>
-  <p>Food not found</p>
-<% end %>
+</div>
