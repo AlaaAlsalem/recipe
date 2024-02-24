@@ -18,7 +18,7 @@
     <div class="flex items-center justify-between h-14">
       <!-- Logo on the left side -->
       <div class="flex-shrink-0 mr-6">
-        <a href="#" class="text-gray-800 font-bold text-xl">Home</a>
+      <%= link_to "Home", root_path, class: "text-gray-800 font-bold text-xl" %>
       </div>
       <!-- Navigation links on the right corner -->
       <div class="flex items-center">
@@ -27,7 +27,9 @@
             <%= link_to "Recipes", culinary_recipes_path, class: "text-gray-800 hover:bg-gray-400 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium" %>
             <%= link_to "Public Recipes", public_recipes_path, class: "text-gray-800 hover:bg-gray-400 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium" %>
             <%= link_to "Create Food", new_food_path, class: "text-gray-800 hover:bg-gray-400 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium" %>
-          </div>
+            <%= link_to "Logout", destroy_user_session_path, method: :delete, class: "text-gray-800 hover:bg-gray-400 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium" %>
+
+            </div>
         </div>
       </div>
     </div>
