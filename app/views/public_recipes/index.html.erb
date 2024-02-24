@@ -1,0 +1,10 @@
+<h1>Public Culinary Recipes</h1>
+
+<ul>
+  <% @culinary_recipes.each do |recipe| %>
+    <li>
+      <h2><%= recipe.name %></h2>
+      <p><%= recipe.description %></p>
+    </li>
+  <% end %>
+</ul>
