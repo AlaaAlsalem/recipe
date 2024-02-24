@@ -4,10 +4,15 @@
 
 <div id="foods">
   <% @foods.each do |food| %>
-    <%= render food %>
-    <p>
-      <%= link_to "Show this food", food %>
-    </p>
+    <div id="<%= dom_id(food) %>">
+      <p>Name: <%= food.name %></p>
+      <p>Measurement: <%= food.measurement %></p>
+      <p>Price: <%= food.price %></p>
+      <p>Quantity: <%= food.quantity %></p>
+      <p>
+        <%= link_to "Show this food", food %>
+      </p>
+    </div>
   <% end %>
 </div>
 

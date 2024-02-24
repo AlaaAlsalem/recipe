@@ -1,5 +1,6 @@
 class FoodsController < ApplicationController
-  before_action :set_food, only: %i[show edit update destroy]
+  before_action :authenticate_user!
+  # before_action :set_food, only: %i[show edit update destroy]
 
   # GET /foods or /foods.json
   def index
@@ -7,7 +8,9 @@ class FoodsController < ApplicationController
   end
 
   # GET /foods/1 or /foods/1.json
-  def show; end
+  def show
+    @food = Food.find(params[:id])
+  end
 
   # GET /foods/new
   def new
@@ -15,15 +18,18 @@ class FoodsController < ApplicationController
   end
 
   # GET /foods/1/edit
-  def edit; end
+
+  def edit
+    @food = Food.find(params[:id])
+  end
 
   # POST /foods or /foods.json
   def create
-    @food = Food.new(food_params)
+    @food = current_user.foods.build(food_params)
 
     respond_to do |format|
       if @food.save
-        format.html { redirect_to food_url(@food), notice: 'Food was successfully created.' }
+        format.html { redirect_to @food, notice: 'Food was successfully created.' }
         format.json { render :show, status: :created, location: @food }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -47,6 +53,7 @@ class FoodsController < ApplicationController
 
   # DELETE /foods/1 or /foods/1.json
   def destroy
+    @food = Food.find(params[:id])
     @food.destroy!
 
     respond_to do |format|
@@ -55,15 +62,18 @@ class FoodsController < ApplicationController
     end
   end
 
+
   private
 
   # Use callbacks to share common setup or constraints between actions.
   def set_food
-    @food = Food.find(params[:id])
+    # Assuming `user` represents the current user
+    @food = Food.new(food_params)
+    @food.user = user
   end
 
   # Only allow a list of trusted parameters through.
   def food_params
-    params.fetch(:food, {})
+    params.permit(:name, :measurement_unit, :price)
   end
 end
