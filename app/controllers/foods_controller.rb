@@ -35,10 +35,14 @@ class FoodsController < ApplicationController
 
   # PATCH/PUT /foods/1
   def update
-    if @food.update(food_params)
-      redirect_to @food, notice: 'Food was successfully updated.'
+    if @food.user == current_user # Check if the current user is the owner of the food item
+      if @food.update(food_params)
+        redirect_to @food, notice: 'Food was successfully updated.'
+      else
+        render :edit
+      end
     else
-      render :edit
+      redirect_to @food, alert: 'You are not authorized to edit this food item.'
     end
   end
 
