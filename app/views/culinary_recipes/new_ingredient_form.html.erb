@@ -1,0 +1,25 @@
+<%= form_with url: add_ingredient_culinary_recipe_path(@culinary_recipe), method: :post, local: true do |form| %>
+    <div class="field">
+      <%= form.label :name %>
+      <%= form.text_field :name %>
+    </div>
+    <div class="field">
+      <%= form.label :measurement %>
+      <%= form.number_field :measurement %>
+    </div>
+    <div class="field">
+      <%= form.label :price %>
+      <%= form.number_field :price %>
+    </div>
+    <div class="field">
+      <%= form.label :quantity %>
+      <%= form.number_field :quantity %>
+    </div>
+      <div class="my-5">
+    <%= form.label :user_id %>
+    <%= form.text_field :user_id, value: current_user.id, readonly: true, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+  </div>
+    <div class="actions">
+      <%= form.submit "Add Ingredient" %>
+    </div>
+<% end %>

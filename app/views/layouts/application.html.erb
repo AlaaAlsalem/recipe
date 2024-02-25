@@ -5,12 +5,44 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+    <%= stylesheet_link_tag "application" %>
 
-    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "application.tailwind", "data-turbo-track": "reload" %>
+
     <%= javascript_importmap_tags %>
-  </head>
+     </head>
 
   <body>
-    <%= yield %>
+  <nav class="bg-gray-200">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center justify-between h-14">
+      <!-- Logo on the left side -->
+      <div class="flex-shrink-0 mr-6">
+      <%= link_to "Home", root_path, class: "text-gray-800 font-bold text-xl" %>
+      </div>
+      <!-- Navigation links on the right corner -->
+      <div class="flex items-center">
+        <div class="hidden sm:block">
+          <div class="flex space-x-4">
+            <%= link_to "Recipes", culinary_recipes_path, class: "text-gray-800 hover:bg-gray-400 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium" %>
+            <%= link_to "Public Recipes", public_recipes_path, class: "text-gray-800 hover:bg-gray-400 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium" %>
+            <%= link_to "Food", foods_path, class: "text-gray-800 hover:bg-gray-400 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium" %>
+            <%= link_to "Logout", destroy_user_session_path, method: :delete, class: "text-gray-800 hover:bg-gray-400 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium" %>
+
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
+
+
+
+
+    <main class="container mx-auto mt-28 px-5 flex">
+    
+      <%= yield %>
+    </main>
   </body>
 </html>
