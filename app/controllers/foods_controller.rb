@@ -44,9 +44,14 @@ class FoodsController < ApplicationController
 
   # DELETE /foods/1
   def destroy
-    @food.destroy
-    redirect_to foods_url, notice: 'Food was successfully destroyed.'
+    if @food.user == current_user
+      @food.destroy
+      redirect_to foods_url, notice: 'Food was successfully destroyed.'
+    else
+      redirect_to foods_url, alert: "You don't have permission to delete this food item."
+    end
   end
+
 
   private
 

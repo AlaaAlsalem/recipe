@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+    <%= stylesheet_link_tag "application" %>
 
     <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
     <%= stylesheet_link_tag "application.tailwind", "data-turbo-track": "reload" %>
@@ -26,7 +27,7 @@
           <div class="flex space-x-4">
             <%= link_to "Recipes", culinary_recipes_path, class: "text-gray-800 hover:bg-gray-400 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium" %>
             <%= link_to "Public Recipes", public_recipes_path, class: "text-gray-800 hover:bg-gray-400 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium" %>
-            <%= link_to "Create Food", new_food_path, class: "text-gray-800 hover:bg-gray-400 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium" %>
+            <%= link_to "Food", foods_path, class: "text-gray-800 hover:bg-gray-400 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium" %>
             <%= link_to "Logout", destroy_user_session_path, method: :delete, class: "text-gray-800 hover:bg-gray-400 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium" %>
 
             </div>
